@@ -23,11 +23,11 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: docker/build-push-action@v6
         with:
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
           secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.PAT }}
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
